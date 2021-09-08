@@ -38,12 +38,41 @@ class LinkedList{
   this.length++
   return this
   }
+  pop(){
+    // Case 1. When the LL is already empty
+    if(this.head && this.tail == null) return undefined
+        // Two extra pointers (pre becomes the tail and temp becomes the popped off item)
+    let temp = this.head
+    let pre = this.head
+    // Case 2. When the LL has items
+    // The loop runs until the temp.next points to null
+    while(temp.next){
+      // Put temp in pre
+      pre = temp
+      // Put temp.next that is the next pointer to temp
+      temp = temp.next
+    }
+    // Once the loop breaks
+    // pre becomes the tail
+    this.tail = pre 
+    this.tail.next = null 
+    this.length--
+
+    // Case 3. When the LL has only one item
+    if(this.length == 0){
+      this.head = null
+      this.tail = null
+    }
+    // Temp coonsists of the popped item
+    return temp
+  }
   }
 
 
 
 const myLL = new LinkedList(7)
 myLL.push(4)
+myLL.pop()
 console.log(myLL)
 
 
