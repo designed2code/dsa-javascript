@@ -66,13 +66,33 @@ class LinkedList{
     // Temp coonsists of the popped item
     return temp
   }
+  unshift(value){
+    const newNode = new Node(value)
+    // If the LL is empty both head and tail point to the newNode
+    if(!this.head){
+        this.head = newNode
+        this.tail = newNode
+    }else{
+        // Make the pointer of the newNode point to the head
+        newNode.next = this.head
+        // Make the head point to the newNode
+        this.head = newNode
+    }
+    // Increment the Length
+    this.length++
+    // return the entire LL
+    return this
+}
   }
 
 
 
 const myLL = new LinkedList(7)
 myLL.push(4)
+myLL.push(5)
+myLL.push(6)
 myLL.pop()
+myLL.unshift(10)
 console.log(myLL)
 
 
